@@ -60,12 +60,15 @@ double boxType::getHeight() const {
 }
 
 double boxType::area() const {
-    // cannot directly access the private member variables of the base     class. Must use the public member functions of the base class.
+    // cannot directly access the private member variables of the base    
+    // class. Must use the public member functions of the base class.
     return 2 * (getLength() * getWidth() + getLength() * height + getWidth() * height);
 }
 
 double boxType::volume() const {
-    // boxType class overrides the area member function of the base class. so to access the base class member func needs to called the base class with scope resolution.
+    // boxType class overrides the area member function of the base class. 
+    // so to access the base class member func needs to called the base class 
+    // with scope resolution.
     return rectangleType::area() * height;
 }
 
