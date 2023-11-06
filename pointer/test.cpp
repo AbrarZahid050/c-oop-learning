@@ -30,14 +30,26 @@ int main() {
     }
 
     listOne.print();
-
     ptrMemberVarType listTwo(listOne); // this would invoke the copy-constructor.
+
+    cout << "=> [main] listTwo:\n";
+    listTwo.print();
+
+    cout << "=> [main] just before testCopyConst.\n";
+    testCopyConst(listOne);
+    listOne.print();
+
 
     return 0;
 }
 
 void testCopyConst(ptrMemberVarType temp) {
-
+    cout << "-> [testCopyConst] before change:\n";
+    temp.print();
+    temp.insertAt(3, 100);
+    cout << "-> [testCopyConst] after change:\n";
+    temp.print();
+    cout << "-> [testCopyConst] before exiting\n";
 }
 
 ptrMemberVarType::ptrMemberVarType(int size) {
@@ -71,14 +83,15 @@ ptrMemberVarType::ptrMemberVarType(const ptrMemberVarType& otherObject) {
 }
 
 void ptrMemberVarType::print() const {
-    cout << "-> [print]\n";
+    cout << "-> [print]";
     for (int i = 0; i < length; i++) {
-        cout << "   p[" << i << "] - " << p[i] << endl;
+        cout << "   p[" << i << "] - " << p[i] << " ";
     }
+    cout << endl;
 }
 
 void ptrMemberVarType::insertAt(int index, int num) {
-    cout << "-> [insertAt] index at: " << index << endl;
+    // cout << "-> [insertAt] index at: " << index << endl;
     assert(index >= 0 && index < maxSize);
 
     if (index < length) {
