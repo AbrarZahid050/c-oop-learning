@@ -14,11 +14,30 @@ private:
     int* p;
 };
 
+void testCopyConst(ptrMemberVarType temp);
+
 using namespace std;
 
 int main() {
     cout << "=> [main]\n";
+    ptrMemberVarType listOne;
+    int num, index;
+
+    cout << "Enter 5 numbers: \n";
+    for (index = 0; index < 5; index++) {
+        cin >> num;
+        listOne.insertAt(index, num);
+    }
+
+    listOne.print();
+
+    ptrMemberVarType listTwo(listOne); // this would invoke the copy-constructor.
+
     return 0;
+}
+
+void testCopyConst(ptrMemberVarType temp) {
+
 }
 
 ptrMemberVarType::ptrMemberVarType(int size) {
@@ -59,6 +78,7 @@ void ptrMemberVarType::print() const {
 }
 
 void ptrMemberVarType::insertAt(int index, int num) {
+    cout << "-> [insertAt] index at: " << index << endl;
     assert(index >= 0 && index < maxSize);
 
     if (index < length) {
