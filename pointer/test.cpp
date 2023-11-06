@@ -3,7 +3,8 @@
 
 class ptrMemberVarType {
 public:
-    ptrMemberVarType();
+    ptrMemberVarType(); // Constructor
+    ~ptrMemberVarType(); // Destructor
 
 private:
     int x;
@@ -17,9 +18,14 @@ int main() {
     ptrMemberVarType objectOne;
     ptrMemberVarType objectTwo;
 
+    cout << "=> [main]" << endl;
     return 0;
 }
 
 ptrMemberVarType::ptrMemberVarType() {
     cout << "-> [Constructor] " << endl;
+}
+
+ptrMemberVarType::~ptrMemberVarType() {
+    cout << "-> [Destructor] clean-up." << endl;
 }
