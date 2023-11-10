@@ -4,7 +4,7 @@ class petType {
 public:
     virtual void print();
     petType(std::string = "");
-    ~petType();
+    virtual ~petType();
 
 private:
     std::string name;
@@ -43,11 +43,11 @@ void dogType::setBreed(std::string b) {
 }
 
 petType::~petType() {
-    std::cout << "~> [petType] destructor.";
+    std::cout << "~> [petType] destructor.\n";
 }
 
 dogType::~dogType() {
-    std::cout << "~> [dogType] destructor.";
+    std::cout << "~> [dogType] destructor.\n";
 }
 
 void callPrint(petType* p) {
@@ -55,24 +55,19 @@ void callPrint(petType* p) {
 }
 
 int main() {
-    // petType pet("Jimmy");
-    // dogType dog("Tommy", "husky");
-    // pet = dog;
-    // pet.print();
-
-    // the above statement will only copy name member variable of drived class.
-    // this is called "slicing problem" in C++.
-
-    // ------------------------------------------------------------
-    // C++ offers a way to treat a dogType object as a petType 
-    // object without losing the additional properties of the class dogType by using pointers.
     petType* pet;
     dogType* dog;
-    dog = new dogType("Tommy", "Husky");
-    dog->setBreed("shintu");
-    pet = dog;
 
-    pet->print();
+    pet = new petType("Jimmy");
+    dog = new dogType("Tommy", "Husky");
+
+    // petType pet("Jimmy");
+    // dogType dog("Tommy", "Husky");
+
+    callPrint(dog);
+
+    std::cout << "*** calling callPrint() ***\n";
+    delete dog;
 
     return 0;
 }
